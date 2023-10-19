@@ -2,3 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base{
+    body[darkmode=true]{
+        @apply bg-yellow-900 min-h-screen
+    }
+}
+
+@layer components{
+    .dropdown li a.active, .action-button{
+        @apply bg-yellow-400 text-black font-semibold !important
+    }
+    .dropdown li a.active:hover, .menu-horizontal li a.active:hover{
+        @apply animate-pulse !important
+    }
+    .dropdown li a:not(.active), .btn-navigation{
+        @apply   !important
+    }
+    .dropdown li a:not(.active):hover, .btn-navigation:hover{
+        @apply bg-yellow-400/60 !important
+    }
+    .menu-horizontal li a{
+        @apply rounded-none !important
+
+    }
+    .menu-horizontal li a.active{
+        @apply bg-red-600 !important
+
+    }
+    .menu-horizontal li a:not(.active):hover{
+        @apply bg-white !important
+    }
+}
