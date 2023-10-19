@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="w-full bottom-0 bg-yellow-400 text-base-content mt-12">
             
             <footer className=" container mx-auto footer p-10 ">
-                <aside>
+                <aside data-aos="fade-right">
                     <img src="/logo2.png" alt="" />
                     <p>Food Group Center<br />Enjoy The Foods That You Love!</p>
                 </aside>
