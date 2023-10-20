@@ -20,7 +20,7 @@ const Routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brands`)
+        loader: () => fetch(`https://server-khaki-tau.vercel.app/brands`)
       },
       {
         path: "/error",
@@ -29,12 +29,12 @@ const Routes = createBrowserRouter([
       {
         path: "/addproduct",
         element: <PrivateRoute><AddProduct /></PrivateRoute>,
-        loader: () => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brands`)
+        loader: () => fetch(`https://server-khaki-tau.vercel.app/brands`)
       },
       {
         path: "/mycart",
         element: <PrivateRoute><MyCart /></PrivateRoute>,
-        loader: () => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/products`)
+        loader: () => fetch(`https://server-khaki-tau.vercel.app/products`)
       },
       {
         path: "/login",
@@ -47,7 +47,7 @@ const Routes = createBrowserRouter([
       {
         path: "/brand/:id",
         element: <PrivateRoute><BrandHome /></PrivateRoute>,
-        loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brand/${params.id}`, {
+        loader: ({ params }) => fetch(`https://server-khaki-tau.vercel.app/brand/${params.id}`, {
           method: "GET",  
           mode: "cors",
           headers: {
@@ -58,7 +58,7 @@ const Routes = createBrowserRouter([
       {
         path: "/product/:id",
         element: <PrivateRoute><ProductDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/product/${params.id}`, {
+        loader: ({ params }) => fetch(`https://server-khaki-tau.vercel.app/product/${params.id}`, {
           method: "GET",  
           mode: "cors",
           headers: {
@@ -69,7 +69,7 @@ const Routes = createBrowserRouter([
       {
         path: "/updateproduct/:id",
         element: <PrivateRoute><UpdateInfo /></PrivateRoute>,
-        loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/product/${params.id}`, {
+        loader: ({ params }) => fetch(`https://server-khaki-tau.vercel.app/product/${params.id}`, {
           method: "GET",  
           mode: "cors",
           headers: {

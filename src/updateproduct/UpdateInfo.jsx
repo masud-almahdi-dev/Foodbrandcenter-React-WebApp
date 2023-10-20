@@ -15,7 +15,7 @@ const UpdateInfo = () => {
     const foodtypes = [{ name: "Beverage" }, { name: "Chickens & Fry" }, { name: "Grocery" }, { name: "Pizza" }]
     useEffect(() => {
         if (product && Array.isArray(product) && product.length) {
-            fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brands`).then(res => res.json()).then(data => {
+            fetch(`https://server-khaki-tau.vercel.app/brands`).then(res => res.json()).then(data => {
                 setbrands(data)
                 document.querySelector(`#update-form input[name="title"]`).value = product[0].title
                 document.querySelector(`#update-form input[name="image"]`).value = product[0].image
@@ -54,7 +54,7 @@ const UpdateInfo = () => {
     }
     const handleDelete = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/delete/${product[0]._id}`, {
+        const response = await fetch(`https://server-khaki-tau.vercel.app/delete/${product[0]._id}`, {
             method: "DELETE"
         }).then(res => {
             return navigate(`/brand/${product[0].brand_id}`)
@@ -78,7 +78,7 @@ const UpdateInfo = () => {
         }
         let brand_id = brands[currentbrand]._id
         let pr = { title, brand_id, image, type, price, details, rating }
-        const response = await fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/updateproduct/${product[0]._id}`, {
+        const response = await fetch(`https://server-khaki-tau.vercel.app/updateproduct/${product[0]._id}`, {
             method: "PUT",
             mode: "cors",
             headers: {

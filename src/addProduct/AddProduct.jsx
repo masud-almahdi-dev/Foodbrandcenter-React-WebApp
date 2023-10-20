@@ -39,7 +39,7 @@ const AddProduct = () => {
         }
         let brand_id = brands[currentbrand]._id
         let product = { title, brand_id, image, price, type, details, rating} 
-        const response = await fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/addproduct`,{
+        const response = await fetch(`https://server-khaki-tau.vercel.app/addproduct`,{
             method: "POST",
             mode: "cors",
             headers: {
