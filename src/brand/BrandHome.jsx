@@ -1,9 +1,19 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Slider from "../components/Slider";
 import ProductCard from "./productCard";
+import { useEffect } from "react";
 
 const BrandHome = () => {
     const brand = useLoaderData()
+    const navigate = useNavigate()
+    useEffect(()=>{
+        console.log(brand)
+        if( brand && Array.isArray(brand) && brand.length){
+            
+        }else{
+            navigate("/error")
+        }
+    },[])
     return (
         <div className="container mx-auto">
             {brand.length && <Slider items={brand[0].ads} />}

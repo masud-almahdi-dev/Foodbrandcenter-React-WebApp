@@ -23,7 +23,7 @@ const Home = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-4">
                     {
                         brands.map(
-                            item => <BrandItem key={item.brandID} brand={item} />
+                            item => <BrandItem key={item._id} brand={item} />
                         )
                     }
                 </div>

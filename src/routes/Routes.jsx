@@ -8,6 +8,7 @@ import Login from "../login/Login";
 import PrivateRoute from "./PrivateRoute";
 import SignUp from "../login/SignUp";
 import BrandHome from "../brand/BrandHome";
+import ProductDetails from "../productDetails/ProductDetails";
 
 const Routes = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const Routes = createBrowserRouter([
         path: "/",
         element: <Home />,
         loader: () => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brands`)
+      },
+      {
+        path: "/error",
+        element: <ErrorPage />
       },
       {
         path: "/addproduct",
@@ -41,6 +46,17 @@ const Routes = createBrowserRouter([
         path: "/brand/:id",
         element: <BrandHome />,
         loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brand/${params.id}`, {
+          method: "GET",  
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        })
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetails />,
+        loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/product/${params.id}`, {
           method: "GET",  
           mode: "cors",
           headers: {
