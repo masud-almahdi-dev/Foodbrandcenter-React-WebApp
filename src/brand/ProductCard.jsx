@@ -21,7 +21,7 @@ const ProductCard = ({ item }) => {
                 {stars}
                 <div className="flex justify-between mt-4">
                     <NavLink to={`/product/${_id}`} className="px-3 py-2 bg-red-400 text-red-800 hover:bg-red-300 rounded-md transition-all flex items-center justify-center text-center">Details</NavLink>
-                    <NavLink to={`/product/${_id}`} className="px-2 py-1 hover:bg-red-300 text-red-800 rounded-md transition-all flex items-center justify-center text-center">Update</NavLink>
+                    <NavLink to={`/updateproduct/${_id}`} className="px-2 py-1 hover:bg-red-300 text-red-800 rounded-md transition-all flex items-center justify-center text-center">Update</NavLink>
                 </div>
             </div>
         </div>

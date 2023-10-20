@@ -7,7 +7,6 @@ const BrandHome = () => {
     const brand = useLoaderData()
     const navigate = useNavigate()
     useEffect(()=>{
-        console.log(brand)
         if( brand && Array.isArray(brand) && brand.length){
             
         }else{

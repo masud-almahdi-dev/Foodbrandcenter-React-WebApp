@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import SignUp from "../login/SignUp";
 import BrandHome from "../brand/BrandHome";
 import ProductDetails from "../productDetails/ProductDetails";
+import UpdateInfo from "../updateproduct/UpdateInfo";
 
 const Routes = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/mycart",
-        element: <MyCart />,
+        element: <PrivateRoute><MyCart /></PrivateRoute>,
       },
       {
         path: "/login",
@@ -44,7 +45,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/brand/:id",
-        element: <BrandHome />,
+        element: <PrivateRoute><BrandHome /></PrivateRoute>,
         loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brand/${params.id}`, {
           method: "GET",  
           mode: "cors",
@@ -55,7 +56,18 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <ProductDetails />,
+        element: <PrivateRoute><ProductDetails /></PrivateRoute>,
+        loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/product/${params.id}`, {
+          method: "GET",  
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        })
+      },
+      {
+        path: "/updateproduct/:id",
+        element: <PrivateRoute><UpdateInfo /></PrivateRoute>,
         loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/product/${params.id}`, {
           method: "GET",  
           mode: "cors",
