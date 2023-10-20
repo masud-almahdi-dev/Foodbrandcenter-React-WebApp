@@ -17,7 +17,6 @@ const UpdateInfo = () => {
         if (product && Array.isArray(product) && product.length) {
             fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brands`).then(res => res.json()).then(data => {
                 setbrands(data)
-                console.log(product[0])
                 document.querySelector(`#update-form input[name="title"]`).value = product[0].title
                 document.querySelector(`#update-form input[name="image"]`).value = product[0].image
                 document.querySelector(`#update-form input[name="price"]`).value = product[0].price
@@ -58,7 +57,6 @@ const UpdateInfo = () => {
         const response = await fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/delete/${product[0]._id}`, {
             method: "DELETE"
         }).then(res => {
-            console.log(res)
             return navigate(`/brand/${product[0].brand_id}`)
         })
     }

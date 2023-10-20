@@ -17,7 +17,7 @@ const ProductDetails = () => {
     const notify = () => {
         let result = addPurchaseToCart(product[0]._id);
         if (result === "ok") {
-            toast.success(<div className=' font-medium p-4 py-5'>Purchase was successful!</div>, {
+            toast.success(<div className=' font-medium p-4 py-5'>Added to cart!</div>, {
                 position: "bottom-right",
                 autoClose: 8000,
                 hideProgressBar: false,
@@ -28,7 +28,7 @@ const ProductDetails = () => {
                 theme: "colored",
             });
         } else if (result === "already") {
-            toast.info(<div className='p-4 py-5'>Already Purchased!</div>, {
+            toast.info(<div className='p-4 py-5'>Already in cart!</div>, {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,

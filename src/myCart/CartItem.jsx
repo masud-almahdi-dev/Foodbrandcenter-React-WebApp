@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 
-const ProductCard = ({ item }) => {
+const CartItem = ({ item,remover }) => {
     const { _id, title, details, image, price, rating } = item
     let ratingstars = [0, 0, 0, 0, 0]
+
     const stars =
         <div className="rating mb-4" id="product-rating">
-            {ratingstars.map((item,index) => {
-                return index==rating? 
-                <input type="radio" key={index} name="rating-1" className="mask mask-star-2 rating-stars" readOnly checked />:
-                <input type="radio" key={index} name="rating-1" className="mask mask-star-2 rating-stars" readOnly />
+            {ratingstars.map((item, index) => {
+                return index == rating ?
+                    <input type="radio" key={index} name="rating-1" className="mask mask-star-2 rating-stars" readOnly checked /> :
+                    <input type="radio" key={index} name="rating-1" className="mask mask-star-2 rating-stars" readOnly />
             })}
         </div>
 
@@ -21,11 +22,11 @@ const ProductCard = ({ item }) => {
                 {stars}
                 <div className="flex justify-between mt-4">
                     <NavLink to={`/product/${_id}`} className="px-3 py-2 bg-red-400 text-red-800 hover:bg-red-300 rounded-md transition-all flex items-center justify-center text-center">Details</NavLink>
-                    <NavLink to={`/updateproduct/${_id}`} className="px-2 py-1 hover:bg-red-300 text-red-800 rounded-md transition-all flex items-center justify-center text-center">Update</NavLink>
+                    <button onClick={remover} className="px-2 py-1 hover:bg-red-300 text-red-800 rounded-md transition-all flex items-center justify-center text-center">Remove From Cart</button>
                 </div>
             </div>
         </div>
     );
 }
 
-export default ProductCard;
+export default CartItem;

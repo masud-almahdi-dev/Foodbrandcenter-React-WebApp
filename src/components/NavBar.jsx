@@ -12,7 +12,7 @@ const NavBar = () => {
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/addproduct">Add Product</NavLink></li>
         <li><NavLink to="/mycart">My Cart</NavLink></li>
-        <li><NavLink to="/login" state={location?.state ? location.state : "/"}>Login</NavLink></li>
+        {user ? "":<li><NavLink to="/login" state={location?.state ? location.state : "/"}>Login</NavLink></li>}
     </>
     const toggledarkmode = () => {
         if (darkmode) {

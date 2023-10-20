@@ -16,4 +16,10 @@ const addPurchaseToCart = (id) => {
     }
     return "already"
 }
-export { getCart, addPurchaseToCart}
+const removefromCart = (id) => {
+    const storedItems = getCart()
+    const without = storedItems.filter(index=> !(index === id));
+    localStorage.setItem("my-items",JSON.stringify(without));
+    return "ok"
+}
+export { getCart, addPurchaseToCart, removefromCart}

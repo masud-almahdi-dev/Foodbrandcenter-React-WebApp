@@ -12,7 +12,6 @@ const AddProduct = () => {
     const location = useLocation()
     const brands = useLoaderData()
     const foodtypes = [{name:"Beverage"},{name:"Chickens & Fry"},{name:"Grocery"},{name:"Pizza"}]
-    //console.log(brands)
     const navigate = useNavigate()
     const brandchange = e => {
         e.preventDefault();
