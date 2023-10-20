@@ -23,7 +23,6 @@ const NavBar = () => {
             document.querySelector("body").setAttribute("darkmode", "true")
         }
         setdarkmode(!darkmode)
-        console.log(darkmode)
     }
     useEffect(
         () => {

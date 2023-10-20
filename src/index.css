@@ -9,7 +9,7 @@
         @apply bg-red-900 min-h-screen
     }
     body{
-        @apply font-inter
+        @apply font-inter bg-[#f3f3f3]
     }
 }
 
@@ -39,5 +39,11 @@
     }
     body[darkmode=true] .text-shoulddark{
         @apply text-white
+    }
+    .rating-stars{
+        @apply bg-red-600 hover:bg-red-400
+    }
+    body[darkmode=true] .rating-stars{
+        @apply bg-red-400 hover:bg-red-200
     }
 }

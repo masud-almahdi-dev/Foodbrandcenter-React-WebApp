@@ -7,32 +7,46 @@ import ErrorPage from "../errorpage/ErrorPage";
 import Login from "../login/Login";
 import PrivateRoute from "./PrivateRoute";
 import SignUp from "../login/SignUp";
+import BrandHome from "../brand/BrandHome";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     element: <Root />,
-    children:[
+    children: [
       {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
+        loader: () => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brands`)
       },
       {
         path: "/addproduct",
-        element: <PrivateRoute><AddProduct/></PrivateRoute>,
+        element: <PrivateRoute><AddProduct /></PrivateRoute>,
+        loader: () => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brands`)
       },
       {
         path: "/mycart",
-        element: <MyCart/>,
+        element: <MyCart />,
       },
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "/signup",
-        element: <SignUp/>,
+        element: <SignUp />,
+      },
+      {
+        path: "/brand/:id",
+        element: <BrandHome />,
+        loader: ({ params }) => fetch(`${import.meta.env.SERVER_URI || "http://localhost:5000"}/brand/${params.id}`, {
+          method: "GET",  
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        })
       },
     ]
   },
