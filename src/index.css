@@ -6,7 +6,7 @@
 
 @layer base{
     body[darkmode=true]{
-        @apply bg-yellow-900 min-h-screen
+        @apply bg-red-900 min-h-screen
     }
     body{
         @apply font-inter
@@ -36,5 +36,8 @@
     }
     .menu-horizontal li a:not(.active):hover{
         @apply bg-white !important
+    }
+    body[darkmode=true] .text-shoulddark{
+        @apply text-white
     }
 }
