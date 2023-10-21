@@ -3,6 +3,7 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { AuthContext } from "../providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "../components/Footer";
 
 const UpdateInfo = () => {
     const { user } = useContext(AuthContext);
@@ -187,6 +188,7 @@ const UpdateInfo = () => {
                     <button className="btn btn-error" onClick={handleDelete}>Delete</button>
                 </div>
             </form>
+            <Footer/>
             <ToastContainer />
         </div>
     );

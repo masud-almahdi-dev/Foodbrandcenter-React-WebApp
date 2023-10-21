@@ -4,6 +4,7 @@ import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom"
 import { updateProfile } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "../components/Footer";
 const AddProduct = () => {
 
     const { user } = useContext(AuthContext);
@@ -137,6 +138,7 @@ const AddProduct = () => {
                     <button className="btn btn-warning">Add</button>
                 </div>
             </form>
+            <Footer/>
             <ToastContainer />
         </div>
     );
