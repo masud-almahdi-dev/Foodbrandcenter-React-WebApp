@@ -1,15 +1,20 @@
 import { useEffect } from "react";
 import Footer from "../components/Footer";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import BrandItem from "./BrandItem";
 
 const Home = () => {
     const brands = useLoaderData()
 
-    useEffect(
-        () => {
-        }, []
-    )
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (brands && Array.isArray(brands) && brands.length) {
+
+        } else {
+            navigate('/error',{state:{id:1,errormessage:'server is down, pleasewait & refresh the page'}});
+        }
+    }, [])
     return (
         <>
             <div className="container mx-auto p-6 md:p-0">

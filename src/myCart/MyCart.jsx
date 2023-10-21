@@ -10,17 +10,25 @@ import CartItem from "./CartItem"
 const MyCart = () => {
     const [cartitems, setCartItems] = useState([])
     const allitems = useLoaderData()
+
+    const navigate = useNavigate();
+
     useEffect(() => {
-        const res = getCart()
-        if (allitems.length > 0) {
-            let incart = []
-            for (let id of res) {
-                for (let item of allitems) {
-                    if (item._id === id) { incart.push(item) }
+        if (allitems && Array.isArray(allitems)) {
+            const res = getCart()
+            if (allitems.length > 0) {
+                let incart = []
+                for (let id of res) {
+                    for (let item of allitems) {
+                        if (item._id === id) { incart.push(item) }
+                    }
                 }
+                setCartItems(incart)
             }
-            setCartItems(incart)
+        } else {
+            navigate('/error',{state:{id:1,errormessage:'server is down, pleasewait & refresh the page'}});
         }
+
     }, [])
     const handleRemoveItem = (id) => {
 

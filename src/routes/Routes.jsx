@@ -48,7 +48,7 @@ const Routes = createBrowserRouter([
         path: "/brand/:id",
         element: <PrivateRoute><BrandHome /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://server-khaki-tau.vercel.app/brand/${params.id}`, {
-          method: "GET",  
+          method: "GET",
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const Routes = createBrowserRouter([
         path: "/product/:id",
         element: <PrivateRoute><ProductDetails /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://server-khaki-tau.vercel.app/product/${params.id}`, {
-          method: "GET",  
+          method: "GET",
           mode: "cors",
           headers: {
             "Content-Type": "application/json",
@@ -69,13 +69,25 @@ const Routes = createBrowserRouter([
       {
         path: "/updateproduct/:id",
         element: <PrivateRoute><UpdateInfo /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://server-khaki-tau.vercel.app/product/${params.id}`, {
-          method: "GET",  
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          }
-        })
+        loader: ({ params }) => {
+          return Promise.all([
+            fetch(`https://server-khaki-tau.vercel.app/product/${params.id}`, {
+              method: "GET",
+              mode: "cors",
+              headers: {
+                "Content-Type": "application/json",
+              }
+            }),
+            fetch(`https://server-khaki-tau.vercel.app/brands`, {
+              method: "GET",
+              mode: "cors",
+              headers: {
+                "Content-Type": "application/json",
+              }
+            })
+          ]
+          )
+        }
       },
     ]
   },

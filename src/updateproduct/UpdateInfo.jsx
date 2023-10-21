@@ -8,23 +8,33 @@ const UpdateInfo = () => {
     const { user } = useContext(AuthContext);
     const [currentbrand, setcurrentbrand] = useState("0")
     const [currenttype, setcurrenttype] = useState("0")
+    const [productloaded, setproductloaded] = useState(false)
+    const [product, setproduct] = useState([])
+    const [brandsloaded, setbrandsloaded] = useState(false)
     const location = useLocation()
     const [brands, setbrands] = useState([])
-    const product = useLoaderData()
+    const loaded = useLoaderData()
     const navigate = useNavigate()
     const foodtypes = [{ name: "Beverage" }, { name: "Chickens & Fry" }, { name: "Grocery" }, { name: "Pizza" }]
     useEffect(() => {
-        if (product && Array.isArray(product) && product.length) {
-            fetch(`https://server-khaki-tau.vercel.app/brands`).then(res => res.json()).then(data => {
-                setbrands(data)
+        if (productloaded && brandsloaded) {
+        } else {
+            loaded[0].json().then(data => { setproduct(data); setproductloaded(true) }, () => { })
+            loaded[1].json().then(data => { setbrands(data); setbrandsloaded(true) }, () => { })
+        }
+    }, [])
+    useEffect(() => {
+
+        if (productloaded && brandsloaded) {
+            if (product && Array.isArray(product) && product.length) {
                 document.querySelector(`#update-form input[name="title"]`).value = product[0].title
                 document.querySelector(`#update-form input[name="image"]`).value = product[0].image
                 document.querySelector(`#update-form input[name="price"]`).value = product[0].price
                 document.querySelector(`#update-form input[name="details"]`).value = product[0].details
                 document.querySelector(`#update-form #product-rating #star-${product[0].rating}`).checked = true
 
-                for (let i = 0; i < data.length; i++) {
-                    if (data[i]._id == product[0].brand_id) {
+                for (let i = 0; i < brands.length; i++) {
+                    if (brands[i]._id == product[0].brand_id) {
                         document.querySelector("#brand-selector").value = String(i)
                         setcurrentbrand(String(i))
                         break;
@@ -37,11 +47,11 @@ const UpdateInfo = () => {
                         break;
                     }
                 }
-            })
-        } else {
-            navigate("/error")
+            } else {
+                navigate("/error")
+            }
         }
-    }, [])
+    }, [productloaded, brandsloaded])
 
 
     const brandchange = e => {
