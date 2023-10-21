@@ -71,8 +71,8 @@ const NavBar = () => {
                             <div className="flex justify-end text-right gap-2 items-center">
                                 {user ? <NavLink onClick={logOut} className="bg-red-500 px-2 py-1 text-white/70 text-xs rounded-md hover:bg-red-300 transition-all">Sign Out</NavLink> :
                                     <>
-                                        <NavLink onClick={logOut} className="bg-red-500 px-2 py-1 text-white/70 text-xs rounded-md hover:bg-red-300 transition-all" to="/login" state={location?.state ? location.state : "/"}>Sign In</NavLink>
-                                        <NavLink onClick={logOut} className="bg-red-500 px-2 py-1 text-white/70 text-xs rounded-md hover:bg-red-300 transition-all" to="/signup" state={location?.state ? location.state : "/"}>Sign Up</NavLink>
+                                        <NavLink className="bg-red-500 px-2 py-1 text-white/70 text-xs rounded-md hover:bg-red-300 transition-all" to="/login" state={location?.state ? location.state : "/"}>Sign In</NavLink>
+                                        <NavLink className="bg-red-500 px-2 py-1 text-white/70 text-xs rounded-md hover:bg-red-300 transition-all" to="/signup" state={location?.state ? location.state : "/"}>Sign Up</NavLink>
                                     </>}
                                 {user && user.displayName ? <h2>{user.displayName}</h2> : <h2>No Name</h2>}</div>
                             <div className="text-xs text-white/70 bg-red-500 px-2 py-1">{user ? user.email : "Not Logged In"}</div>
