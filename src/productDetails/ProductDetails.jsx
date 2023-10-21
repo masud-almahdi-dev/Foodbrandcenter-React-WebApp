@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addPurchaseToCart } from "../utility/localStorage";
+import Footer from "../components/Footer";
 
 const ProductDetails = () => {
     const product = useLoaderData()
@@ -63,6 +64,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
             <ToastContainer />
         </div>
 
