@@ -1,8 +1,10 @@
 # Food Brand Center
 
-Food Brand Center is a "Food & Beverage" related website.
+Food Brand Center is a "Food & Beverage" related website, built using React, Tailwind, Firebase, JWT, MongoDB, Express
 
 Client-Site-Link : https://food-brands-center.web.app
+
+Server-Repo : 
 
 ## Features
 
