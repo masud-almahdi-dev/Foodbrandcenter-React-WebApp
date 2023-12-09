@@ -12,7 +12,7 @@ const AddProduct = () => {
     const [currenttype, setcurrenttype] = useState("0")
     const location = useLocation()
     const brands = useLoaderData()
-    const foodtypes = [{name:"Beverage"},{name:"Chickens & Fry"},{name:"Grocery"},{name:"Pizza"}]
+    const foodtypes = [{name:"Beverage"},{name:"Chickens & Fry"},{name:"Grocery"},{name:"Pizza"},{name:"Burger"},{name:"Others"}]
     const navigate = useNavigate()
     const brandchange = e => {
         e.preventDefault();

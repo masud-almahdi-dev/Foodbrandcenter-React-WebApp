@@ -16,7 +16,8 @@ const UpdateInfo = () => {
     const [brands, setbrands] = useState([])
     const loaded = useLoaderData()
     const navigate = useNavigate()
-    const foodtypes = [{ name: "Beverage" }, { name: "Chickens & Fry" }, { name: "Grocery" }, { name: "Pizza" }]
+    const foodtypes = [{name:"Beverage"},{name:"Chickens & Fry"},{name:"Grocery"},{name:"Pizza"},{name:"Burger"},{name:"Others"}]
+    
     useEffect(() => {
         if (productloaded && brandsloaded) {
         } else {
@@ -54,6 +55,12 @@ const UpdateInfo = () => {
         }
     }, [productloaded, brandsloaded])
 
+
+    const handleGotoDetails = () => {
+        if (productloaded && brandsloaded) {
+            navigate(`/product/${product[0]._id}`)
+        }
+    }
 
     const brandchange = e => {
         e.preventDefault();
@@ -185,9 +192,19 @@ const UpdateInfo = () => {
                     <button className="btn btn-warning">Update</button>
                 </div>
                 <div className="form-control mt-2">
-                    <button className="btn btn-error" onClick={handleDelete}>Delete</button>
+                    <h2 className="btn btn-error" onClick={() => document.getElementById('deleteconfirm').showModal()}>Delete</h2>
                 </div>
             </form>
+            <dialog id="deleteconfirm" className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box text-black">
+                    <h3 className="font-bold text-lg">Delete</h3>
+                    <p className="py-4">Are you sure you want to delete <span onClick={handleGotoDetails} id="deleteboxtitle" className="underline cursor-pointer decoration-pink-400 decoration-4"></span></p>
+                    <form method="dialog" className="w-full flex justify-between">
+                        <button className="btn btn-error hover:brightness-75 text-white" onClick={handleDelete}>Delete</button>
+                        <button method="dialog" className="btn hover:brightness-90">Close</button>
+                    </form>
+                </div>
+            </dialog>
             <Footer/>
             <ToastContainer />
         </div>

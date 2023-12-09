@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
-    const { _id, title, details, image, price, rating } = item
+    const { _id, title, type, image, price, rating } = item
     let ratingstars = [0, 0, 0, 0, 0]
     const stars =
         <div className="rating mb-4" id="product-rating">
@@ -19,6 +19,7 @@ const ProductCard = ({ item }) => {
                 <h3 className="text-lg md:text-xl font-semibold">{title}</h3>
                 <h4 className="font-semibold text-sm">Price : ${price.toFixed(2)}</h4>
                 {stars}
+                <h4 className="font-semibold text-sm">Type: {type.name}</h4>
                 <div className="flex justify-between mt-4">
                     <NavLink to={`/product/${_id}`} className="px-3 py-2 bg-red-400 text-red-800 hover:bg-red-300 rounded-md transition-all flex items-center justify-center text-center">Details</NavLink>
                     <NavLink to={`/updateproduct/${_id}`} className="px-2 py-1 hover:bg-red-300 text-red-800 rounded-md transition-all flex items-center justify-center text-center">Update</NavLink>
